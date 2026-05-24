@@ -1,0 +1,55 @@
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Archivos generados por Docker / volúmenes locales
+data/
+volumes/
+sqlserver_data/
+*.bak
+*.trn
+*.ldf
+*.mdf
+*.ndf
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+
+# Node.js, si luego agregas backend o scripts
+node_modules/
+dist/
+build/
+coverage/
+
+# Python, si luego agregas scripts auxiliares
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Archivos comprimidos
+*.zip
+*.tar
+*.tar.gz
+*.rar

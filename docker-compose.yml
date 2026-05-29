@@ -1,6 +1,7 @@
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
     container_name: sqlserver2022
     hostname: sqlserver2022
     restart: unless-stopped
@@ -21,6 +22,7 @@ services:
 
   sqlserver-init:
     image: mcr.microsoft.com/mssql-tools
+    platform: linux/amd64
     container_name: sqlserver2022_init
     depends_on:
       sqlserver:
@@ -38,8 +40,8 @@ services:
       -S sqlserver
       -U sa
       -P "$${MSSQL_SA_PASSWORD}"
-      -v DB_NAME="$${MSSQL_DATABASE}"
-      -i /init/init.sql;
+      -Q \"IF DB_ID(N'$${MSSQL_DATABASE}') IS NULL BEGIN CREATE DATABASE [$${MSSQL_DATABASE}] END\"
+      -b;
       echo 'Proceso de creación de base de datos finalizado.';
       "
     restart: "no"
